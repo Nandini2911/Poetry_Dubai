@@ -40,7 +40,7 @@ export default function SplashScreen() {
         className="relative"
       >
         <Image
-          src="/poetry_trans.png"
+          src="/poetry_trans.PNG"
           alt="Poetry Dubai"
           width={420}
           height={160}
