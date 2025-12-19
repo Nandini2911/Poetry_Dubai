@@ -63,7 +63,7 @@ export default function CollectionPage() {
                   backdrop-blur-sm
                 "
               >
-                <div className="relative aspect-[4/3] w-full">
+                <div className="relative aspect-4/3 w-full">
                   <Image
                     src={it.image}
                     alt=""
