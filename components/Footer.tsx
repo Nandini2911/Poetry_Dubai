@@ -70,7 +70,7 @@ export default function Footer() {
           <div className="border-t border-[#d6b28a]/40 pt-10 md:pt-0 md:border-t-0 md:border-l flex items-center justify-center">
             <div className="text-center">
               <h3 className="font-serif text-3xl text-[#d6b28a] mb-8">
-                Pages
+               
               </h3>
 
               <nav className="flex flex-col gap-4 text-[#d6b28a]/85 text-lg">
