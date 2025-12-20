@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 export default function SplashScreen() {
   return (
     <motion.div
-      className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden"
+      className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden pointer-events-none"
       initial={{ opacity: 1 }}
       animate={{ opacity: 0 }}
       transition={{ delay: 2.4, duration: 0.9, ease: "easeInOut" }}
@@ -39,15 +39,41 @@ export default function SplashScreen() {
         }}
         className="relative will-change-transform"
       >
-        {/* Responsive wrapper (works on ALL screens) */}
-        <div className="w-[clamp(180px,55vw,420px)]">
+        {/* Breakpoint-tuned width:
+            320: 200px
+            375: 230px
+            425: 260px
+            768: 320px
+            1024: 380px
+            1440: 440px
+            2560: 520px
+        */}
+        <div
+          className="
+            w-[200px]
+            min-[375px]:w-[230px]
+            xs:w-[260px]
+            md:w-[320px]
+            lg:w-[380px]
+            xl2:w-[440px]
+            4k:w-[520px]
+          "
+        >
           <Image
             src="/poetry_trans.PNG"
             alt="Poetry Dubai"
-            width={420}
-            height={160}
+            width={520}
+            height={200}
             priority
-            sizes="(max-width: 480px) 70vw, (max-width: 768px) 60vw, (max-width: 1200px) 420px, 420px"
+            sizes="
+              (max-width: 320px) 200px,
+              (max-width: 375px) 230px,
+              (max-width: 425px) 260px,
+              (max-width: 768px) 320px,
+              (max-width: 1024px) 380px,
+              (max-width: 1440px) 440px,
+              520px
+            "
             className="h-auto w-full drop-shadow-[0_20px_60px_rgba(0,0,0,0.25)]"
           />
         </div>
