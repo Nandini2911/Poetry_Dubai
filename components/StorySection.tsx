@@ -10,7 +10,7 @@ export default function StorySection() {
       {/* LOGO AS BACKGROUND */}
       <div className="absolute inset-0 z-0 flex items-start justify-center pointer-events-none">
         <Image
-          src="/poetry header.png"
+          src="/poetry header.webp"
           alt="Poetry logo background"
           width={1200}
           height={400}

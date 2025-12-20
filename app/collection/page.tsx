@@ -4,12 +4,12 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 const ITEMS = [
-  { id: "1", image: "/c1.JPG" },
-  { id: "2", image: "/c2.JPG" },
-  { id: "3", image: "/c3.JPG" },
-  { id: "4", image: "/c4.JPG" },
-  { id: "5", image: "/c5.JPG" },
-  { id: "6", image: "/c6.png" },
+  { id: "1", image: "/c1.webp" },
+  { id: "2", image: "/c2.webp" },
+  { id: "3", image: "/c3.webp" },
+  { id: "4", image: "/c4.webp" },
+  { id: "5", image: "/c5.webp" },
+  { id: "6", image: "/c6.webp" },
 ];
 
 // slower, luxury ease
