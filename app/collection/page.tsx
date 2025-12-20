@@ -4,11 +4,11 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 const ITEMS = [
-  { id: "1", image: "/c1.jpg" },
-  { id: "2", image: "/c2.jpg" },
-  { id: "3", image: "/c3.jpg" },
-  { id: "4", image: "/c4.jpg" },
-  { id: "5", image: "/c5.jpg" },
+  { id: "1", image: "/c1.JPG" },
+  { id: "2", image: "/c2.JPG" },
+  { id: "3", image: "/c3.JPG" },
+  { id: "4", image: "/c4.JPG" },
+  { id: "5", image: "/c5.JPG" },
   { id: "6", image: "/c6.png" },
 ];
 
