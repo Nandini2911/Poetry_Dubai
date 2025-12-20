@@ -42,7 +42,7 @@ export default function SplashScreen() {
         {/* Responsive wrapper (works on ALL screens) */}
         <div className="w-[clamp(180px,55vw,420px)]">
           <Image
-            src="/poetry_trans.PNG"
+            src="/poetry_trans.webp"
             alt="Poetry Dubai"
             width={420}
             height={160}
