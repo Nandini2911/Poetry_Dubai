@@ -5,8 +5,10 @@ import Reveal from "@/components/Reveal";
 
 export default function StorySection() {
   return (
-    <section id="about"className="relative bg-white px-4 sm:px-6 lg:px-6 py-16 sm:py-20 lg:py-24">
-      
+    <section
+      id="about"
+      className="relative bg-white px-4 sm:px-6 lg:px-6 py-16 sm:py-20 lg:py-24 pb-24 sm:pb-0"
+    >
       {/* LOGO AS BACKGROUND */}
       <div className="absolute inset-0 z-0 flex items-start justify-center pointer-events-none">
         <Image
@@ -14,7 +16,7 @@ export default function StorySection() {
           alt="Poetry logo background"
           width={1200}
           height={400}
-          priority
+          sizes="(max-width: 640px) 92vw, (max-width: 1024px) 896px, 896px"
           className="w-[92%] sm:w-full max-w-[92%] sm:max-w-4xl object-contain opacity-100"
         />
       </div>
@@ -52,10 +54,10 @@ export default function StorySection() {
           alt="Poetry signature"
           width={400}
           height={160}
-          className="w-48 sm:w-64 lg:w-100 "
+          sizes="(max-width: 640px) 192px, (max-width: 1024px) 256px, 400px"
+          className="w-48 sm:w-64 lg:w-100"
         />
       </div>
-
     </section>
   );
 }

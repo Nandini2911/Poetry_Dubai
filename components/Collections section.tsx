@@ -16,13 +16,15 @@ export default function CollectionHighlight() {
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.4, ease: EASE }}
         viewport={{ once: true }}
-        className="relative h-screen w-screen"
+        className="relative w-screen min-h-svh"
       >
         <Image
           src="/third section.png"
           alt="Poetry silver collection"
           fill
-          priority
+          // Set to true ONLY if this section is visible immediately on page load
+          priority={false}
+          sizes="100vw"
           className="object-cover"
         />
 
@@ -44,12 +46,14 @@ export default function CollectionHighlight() {
               type="button"
               onClick={() => router.push("/collection")}
               whileHover={{ x: -6 }}
+              whileTap={{ scale: 0.98 }}
               transition={{ ease: EASE }}
               className="
                 mt-7 ml-auto inline-flex items-center gap-3
                 border border-white/50 px-6 py-2.5
                 text-sm tracking-widest uppercase text-white
                 backdrop-blur hover:border-white hover:bg-white/10
+                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60
               "
             >
               View Collection <span className="text-lg">→</span>

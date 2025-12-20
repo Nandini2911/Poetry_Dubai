@@ -3,22 +3,15 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-const IMAGES = [
-  "/slide 1.png",
-  "/slide 2.png",
-  "/slide 3.png",
-  "/slide 4.png",
-];
-
+const IMAGES = ["/slide 1.png", "/slide 2.png", "/slide 3.png", "/slide 4.png"];
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 export default function PoetryInPolishSlider() {
   const track = [...IMAGES, ...IMAGES];
 
   return (
-    <section id="collections" className="w-full bg-white overflow-hidden">
-      
-      {/* TOP BAR — SLIDE UP */}
+    <section id="collections" className="w-full overflow-hidden bg-white">
+      {/* TOP BAR */}
       <motion.div
         initial={{ opacity: 0, y: 28 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -26,26 +19,28 @@ export default function PoetryInPolishSlider() {
         transition={{ duration: 0.9, ease: EASE }}
         className="bg-[#6b0011] py-10"
       >
-        <h2 className="text-center font-serif text-4xl md:text-6xl tracking-wide text-[#d6b28a]">
+        <h2 className="text-center font-serif text-4xl tracking-wide text-[#d6b28a] md:text-6xl">
           POETRY IN POLISH
         </h2>
       </motion.div>
 
-      {/* SLIDER — NO ANIMATION */}
+      {/* SLIDER */}
       <div className="relative w-full overflow-hidden">
         <div className="marquee">
           <div className="marquee-track">
             {track.map((src, i) => (
               <div
-                key={i}
-                className="relative h-80 md:h-105 aspect-3/4 flex-none"
+                key={`${src}-${i}`}
+                className="relative aspect-[3/4] h-72 flex-none sm:h-80 md:h-[26rem]"
               >
                 <Image
                   src={src}
                   alt={`Poetry in Polish ${i + 1}`}
                   fill
+                  sizes="(max-width: 640px) 70vw, (max-width: 1024px) 40vw, 320px"
                   className="object-cover"
-                  priority={i < 4}
+                  // Keep priority minimal for performance (only first 2)
+                  priority={i < 2}
                 />
               </div>
             ))}
@@ -53,7 +48,7 @@ export default function PoetryInPolishSlider() {
         </div>
       </div>
 
-      {/* BOTTOM BAR — SLIDE UP */}
+      {/* BOTTOM BAR */}
       <motion.div
         initial={{ opacity: 0, y: 28 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -61,9 +56,10 @@ export default function PoetryInPolishSlider() {
         transition={{ duration: 0.9, ease: EASE, delay: 0.1 }}
         className="bg-[#6b0011] py-8"
       >
-        <p className="mx-auto max-w-5xl text-center font-serif text-lg md:text-xl text-[#d6b28a]/90 italic px-6">
+        <p className="mx-auto max-w-5xl px-6 text-center font-serif text-lg italic text-[#d6b28a]/90 md:text-xl">
           From the strength of the lion to the serenity of the Laughing Buddha,
-          every piece is more than décor — it’s a vessel of emotion, culture, and legacy.
+          every piece is more than décor — it’s a vessel of emotion, culture, and
+          legacy.
         </p>
       </motion.div>
 
@@ -73,17 +69,29 @@ export default function PoetryInPolishSlider() {
           width: 100%;
           overflow: hidden;
         }
+
         .marquee-track {
           display: flex;
           width: max-content;
+          gap: 0; /* keep seamless */
           animation: scroll 22s linear infinite;
+          will-change: transform;
+          transform: translateZ(0);
         }
+
         @keyframes scroll {
           from {
-            transform: translateX(0);
+            transform: translate3d(0, 0, 0);
           }
           to {
-            transform: translateX(-50%);
+            transform: translate3d(-50%, 0, 0);
+          }
+        }
+
+        /* Accessibility: respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+          .marquee-track {
+            animation: none;
           }
         }
       `}</style>
