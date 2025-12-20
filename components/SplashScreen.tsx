@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 export default function SplashScreen() {
   return (
     <motion.div
-      className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden"
+      className="fixed inset-0 z-100 flex items-center justify-center overflow-hidden"
       initial={{ opacity: 1 }}
       animate={{ opacity: 0 }}
       transition={{ delay: 2.4, duration: 0.9, ease: "easeInOut" }}

@@ -31,7 +31,7 @@ export default function SilverStoriesSharedSection() {
           {/* Rounded border frame */}
           <div className="overflow-hidden rounded-[44px] border-[6px] border-[#d6b28a]">
             {/* Soft gradient background */}
-            <div className="relative flex items-center justify-center rounded-[38px] bg-linear-to-b from-[#fbf7f0] via-[#eadcc8] to-[#d7bf9c] px-7 py-12 sm:px-10 sm:py-16 md:px-16 md:py-20 text-center min-h-[22rem] md:min-h-[26rem]">
+            <div className="relative flex items-center justify-center rounded-[38px] bg-linear-to-b from-[#fbf7f0] via-[#eadcc8] to-[#d7bf9c] px-7 py-12 sm:px-10 sm:py-16 md:px-16 md:py-20 text-center min-h-88 md:min-h-104">
               <p className="mx-auto max-w-3xl text-base sm:text-lg md:text-2xl leading-relaxed text-[#543008]">
                 Our silver creations aren’t just objects — they become a part of
                 people’s lives. Here’s what our clients say about the beauty,
