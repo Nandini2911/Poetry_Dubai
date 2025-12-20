@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 export default function SplashScreen() {
   return (
     <motion.div
-      className="fixed inset-0 z-100 flex items-center justify-center overflow-hidden"
+      className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden"
       initial={{ opacity: 1 }}
       animate={{ opacity: 0 }}
       transition={{ delay: 2.4, duration: 0.9, ease: "easeInOut" }}
@@ -37,16 +37,20 @@ export default function SplashScreen() {
           times: [0, 0.25, 0.72, 1],
           ease: "easeInOut",
         }}
-        className="relative"
+        className="relative will-change-transform"
       >
-        <Image
-          src="/poetry_trans.PNG"
-          alt="Poetry Dubai"
-          width={420}
-          height={160}
-          priority
-          className="w-60 sm:w-[320px] md:w-105 h-auto drop-shadow-[0_20px_60px_rgba(0,0,0,0.25)]"
-        />
+        {/* Responsive wrapper (works on ALL screens) */}
+        <div className="w-[clamp(180px,55vw,420px)]">
+          <Image
+            src="/poetry_trans.PNG"
+            alt="Poetry Dubai"
+            width={420}
+            height={160}
+            priority
+            sizes="(max-width: 480px) 70vw, (max-width: 768px) 60vw, (max-width: 1200px) 420px, 420px"
+            className="h-auto w-full drop-shadow-[0_20px_60px_rgba(0,0,0,0.25)]"
+          />
+        </div>
       </motion.div>
     </motion.div>
   );
