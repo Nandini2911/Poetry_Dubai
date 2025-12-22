@@ -21,7 +21,7 @@ export default function Footer() {
                 href="mailto:contact@poetrydubai.com"
                 className="underline decoration-[#d6b28a]/60 underline-offset-4 hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d6b28a]/40"
               >
-                contact@poetrydubai.com
+                support@poetrydubai.com
               </a>
             </p>
 
@@ -36,12 +36,7 @@ export default function Footer() {
                 +971 56 395 6179
               </a>
               <br />
-              <a
-                href="tel:+9710563956179"
-                className="underline decoration-[#d6b28a]/40 underline-offset-4 hover:opacity-80"
-              >
-                +971 05 639 56179
-              </a>
+              
             </p>
 
             {/* SOCIAL ICONS */}
