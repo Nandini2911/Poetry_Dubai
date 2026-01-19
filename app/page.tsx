@@ -14,6 +14,7 @@ import RightImageSection from "@/components/RightImageSection";
 import PoetryInPolishSlider from "@/components/PoetryInPolishSlider";
 import SilverStoriesSharedSection from "@/components/SilverStoriesSharedSection";
 import Footer from "@/components/Footer";
+import BrandStrap from "@/components/BrandStrap";
 
 
 export default function Home() {
@@ -36,6 +37,7 @@ export default function Home() {
           animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
           transition={{ duration: 1.1, ease: "easeOut" }}
         >
+          <BrandStrap />
           <Navbar />
           <main>
             <Hero />

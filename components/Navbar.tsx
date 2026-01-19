@@ -1,226 +1,98 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import {
-  Heart,
-  Menu,
-  Search,
-  ShoppingBag,
-  User,
-  ChevronDown,
-  X,
-  Globe,
-} from "lucide-react";
+import { useState } from "react";
+
+const navItems = [
+  { label: "HOME", href: "/" },
+  { label: "COLLECTION", href: "/collection" },
+  { label: "GIFTING", href: "/gifting" },
+  { label: "ABOUT", href: "/about" },
+  { label: "CONTACT", href: "/contact" },
+];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [langOpen, setLangOpen] = useState(false);
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 14);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    const onClick = (e: MouseEvent) => {
-      if (!dropdownRef.current) return;
-      if (!dropdownRef.current.contains(e.target as Node)) setLangOpen(false);
-    };
-    document.addEventListener("mousedown", onClick);
-    return () => document.removeEventListener("mousedown", onClick);
-  }, []);
-
-  useEffect(() => {
-    document.body.style.overflow = drawerOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [drawerOpen]);
+  const [open, setOpen] = useState(false);
 
   return (
-    <>
-      <header
-        className={[
-          "fixed inset-x-0 top-0 z-50 h-16 sm:h-20 transition-all duration-300",
-          scrolled
-            ? "bg-black/55 backdrop-blur-md border-b border-poetry/20"
-            : "bg-transparent",
-        ].join(" ")}
-      >
-        <div className="mx-auto h-full max-w-360 px-4 sm:px-6">
-          <div className="flex h-full items-center justify-between">
-            {/* LEFT */}
-            <div className="flex items-center gap-3 sm:gap-6">
-              <button
-                type="button"
-                onClick={() => setDrawerOpen(true)}
-                className="inline-flex items-center gap-2 sm:gap-3 text-poetry/90 hover:text-poetry transition"
-                aria-label="Open menu"
+    <nav className="relative z-50 w-full bg-white">
+      {/* Top bar */}
+      <div className="mx-auto flex h-20 sm:h-24 md:h-28 max-w-7xl items-center justify-center px-4">
+        {/* DESKTOP NAV → ONLY XL */}
+        <ul className="hidden xl:flex items-center justify-center gap-14">
+          {navItems.map((item, index) => (
+            <li key={item.label} className="flex items-center gap-14">
+              <Link
+                href={item.href}
+                style={{ color: "#8F2C1C" }}
+                className="
+                  font-serif
+                  text-2xl
+                  tracking-[0.4em]
+                  whitespace-nowrap
+                  transition-opacity
+                  hover:opacity-70
+                "
               >
-                <Menu className="h-5 w-5" />
-                {/* Hide MENU text on mobile */}
-                <span className="hidden sm:inline text-[13px] tracking-[0.22em] uppercase">
-                  Menu
+                {item.label}
+              </Link>
+
+              {index !== navItems.length - 1 && (
+                <span style={{ color: "#8F2C1C" }} className="text-2xl">
+                  |
                 </span>
-              </button>
+              )}
+            </li>
+          ))}
+        </ul>
 
-              {/* Search text icon stays, but tighter on mobile */}
-              <button
-                type="button"
-                className="text-poetry/90 hover:text-poetry transition"
-                aria-label="Search"
-              >
-                <Search className="h-5 w-5" />
-              </button>
-            </div>
-
-            {/* RIGHT */}
-            <div className="flex items-center gap-3 sm:gap-6">
-              {/* Icons */}
-              <IconLink href="/wishlist" label="Wishlist">
-                <Heart className="h-5 w-5" />
-              </IconLink>
-
-              <IconLink href="/cart" label="Cart">
-                <ShoppingBag className="h-5 w-5" />
-              </IconLink>
-
-              <IconLink href="/account" label="Account">
-                <User className="h-5 w-5" />
-              </IconLink>
-
-              {/* Language dropdown */}
-              <div className="relative" ref={dropdownRef}>
-                <button
-                  type="button"
-                  onClick={() => setLangOpen((v) => !v)}
-                  className="inline-flex items-center gap-2 text-poetry/90 hover:text-poetry transition"
-                  aria-label="Language"
-                >
-                  {/* Mobile: globe icon only */}
-                  <Globe className="h-5 w-5 sm:hidden" />
-
-                  {/* Desktop: English + chevron */}
-                  <span className="hidden sm:inline text-[13px] tracking-[0.22em] uppercase">
-                    English
-                  </span>
-                  <ChevronDown className="hidden sm:inline h-4 w-4 opacity-90" />
-                </button>
-
-                {langOpen && (
-                  <div className="absolute right-0 mt-3 w-44 overflow-hidden rounded-xl bg-black/80 backdrop-blur-md shadow-luxe ring-1 ring-poetry/20">
-                    {["English", "Arabic"].map((item) => (
-                      <button
-                        key={item}
-                        type="button"
-                        className="w-full px-4 py-3 text-left text-[13px] tracking-[0.12em] uppercase text-poetry/90 hover:text-poetry hover:bg-white/10 transition"
-                        onClick={() => setLangOpen(false)}
-                      >
-                        {item}
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      {/* Drawer overlay */}
-      <div
-        className={[
-          "fixed inset-0 z-60 transition",
-          drawerOpen ? "pointer-events-auto" : "pointer-events-none",
-        ].join(" ")}
-      >
-        {/* Dim */}
-        <div
-          className={[
-            "absolute inset-0 bg-black/60 transition-opacity duration-300",
-            drawerOpen ? "opacity-100" : "opacity-0",
-          ].join(" ")}
-          onClick={() => setDrawerOpen(false)}
-        />
-
-        {/* Panel */}
-        <aside
-          className={[
-            "absolute left-0 top-0 h-full w-[86%] max-w-85",
-            "bg-black/85 backdrop-blur-md",
-            "transition-transform duration-300",
-            drawerOpen ? "translate-x-0" : "-translate-x-full",
-          ].join(" ")}
+        {/* TABLET + MOBILE MENU */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="
+            xl:hidden
+            flex items-center gap-3
+            font-serif
+            text-lg sm:text-xl
+            tracking-[0.35em]
+            text-[#8F2C1C]
+          "
+          aria-label="Toggle menu"
         >
-          <div className="flex items-center justify-between px-5 h-16 sm:h-20 border-b border-poetry/20">
-            <span className="text-[13px] tracking-[0.22em] uppercase text-poetry/90">
-              Menu
-            </span>
-            <button
-              aria-label="Close menu"
-              className="text-poetry/90 hover:text-poetry transition"
-              onClick={() => setDrawerOpen(false)}
-            >
-              <X className="h-5 w-5" />
-            </button>
-          </div>
-
-          <nav className="px-5 py-6 space-y-4">
-            <DrawerLink href="/">Home</DrawerLink>
-            <DrawerLink href="#collections">Collections</DrawerLink>
-            <DrawerLink href="/bar">Bar Accessories</DrawerLink>
-            <DrawerLink href="/gifting">Gifting</DrawerLink>
-            <DrawerLink href="#about">About</DrawerLink>
-            <DrawerLink href="#contact">Contact</DrawerLink>
-          </nav>
-
-          <div className="px-5 pt-2 text-xs text-poetry/70">
-            Poetry Dubai — Silver, styled quietly.
-          </div>
-        </aside>
+          MENU
+          <span className="flex flex-col gap-[5px]">
+            <span className="block h-[1.5px] w-5 bg-[#8F2C1C]" />
+            <span className="block h-[1.5px] w-5 bg-[#8F2C1C]" />
+            <span className="block h-[1.5px] w-5 bg-[#8F2C1C]" />
+          </span>
+        </button>
       </div>
-    </>
-  );
-}
 
-function IconLink({
-  href,
-  label,
-  children,
-}: {
-  href: string;
-  label: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <Link
-      href={href}
-      aria-label={label}
-      className="text-poetry/90 hover:text-poetry transition"
-    >
-      {children}
-    </Link>
-  );
-}
-
-function DrawerLink({
-  href,
-  children,
-}: {
-  href: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <Link
-      href={href}
-      className="block text-[13px] tracking-[0.22em] uppercase text-poetry/90 hover:text-poetry transition"
-    >
-      {children}
-    </Link>
+      {/* TABLET / MOBILE MENU PANEL */}
+      {open && (
+        <div className="xl:hidden border-t border-neutral-200 bg-white">
+          <ul className="flex flex-col items-center gap-8 py-10">
+            {navItems.map((item) => (
+              <li key={item.label}>
+                <Link
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  style={{ color: "#8F2C1C" }}
+                  className="
+                    font-serif
+                    text-lg sm:text-xl
+                    tracking-[0.35em]
+                    transition-opacity
+                    hover:opacity-70
+                  "
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </nav>
   );
 }
