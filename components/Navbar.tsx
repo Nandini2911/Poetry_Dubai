@@ -5,10 +5,10 @@ import { useState } from "react";
 
 const navItems = [
   { label: "HOME", href: "/" },
-  { label: "COLLECTION", href: "/collection" },
+  { label: "COLLECTION", href: "#collections" },
   { label: "GIFTING", href: "/gifting" },
-  { label: "ABOUT", href: "/about" },
-  { label: "CONTACT", href: "/contact" },
+  { label: "ABOUT", href: "#about" },
+  { label: "CONTACT", href: "#contact" },
 ];
 
 export default function Navbar() {
