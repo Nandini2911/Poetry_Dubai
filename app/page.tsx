@@ -15,6 +15,7 @@ import PoetryInPolishSlider from "@/components/PoetryInPolishSlider";
 import SilverStoriesSharedSection from "@/components/SilverStoriesSharedSection";
 import Footer from "@/components/Footer";
 import BrandStrap from "@/components/BrandStrap";
+import FounderNote from "@/components/FounderNote";
 
 
 export default function Home() {
@@ -41,6 +42,7 @@ export default function Home() {
           <Navbar />
           <main>
             <Hero />
+            <FounderNote />
             <StorySection/>
             <CollectionHighlight/>
             <RightImageSection    />

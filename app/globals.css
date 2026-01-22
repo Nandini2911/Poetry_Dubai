@@ -4,7 +4,7 @@
 /* GLOBAL BRAND TOKENS */
 /* ============================= */
 :root {
-  --gold: #c9b27d;
+  --gold:#8F2C1C;
   --bg-cream: #fbf6ee;
 }
 
@@ -58,4 +58,65 @@ a {
   );
   animation: poetryShimmer 3.2s ease-in-out infinite;
   mix-blend-mode: soft-light;
+}
+/* ===== Luxury Brand Reveal ===== */
+
+.brand-mask {
+  overflow: hidden;
+}
+
+.brand-logo {
+  animation: logoRevealLuxury 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transform-origin: center;
+}
+
+/* silk-like reveal */
+@keyframes logoRevealLuxury {
+  0% {
+    opacity: 0;
+    transform: translateY(22px) scale(0.96);
+    filter: blur(6px);
+  }
+  60% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* subtle gold light sweep */
+.brand-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(212, 175, 55, 0.25),
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  animation: glowSweep 2.2s ease-out forwards;
+}
+
+@keyframes glowSweep {
+  to {
+    transform: translateX(120%);
+  }
+}
+
+/* hover shimmer */
+.group:hover .brand-glow::before {
+  animation: glowHover 1.2s ease-in-out;
+}
+
+@keyframes glowHover {
+  from {
+    transform: translateX(-120%);
+  }
+  to {
+    transform: translateX(120%);
+  }
 }
