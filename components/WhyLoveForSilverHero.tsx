@@ -7,7 +7,7 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 export default function WhyLoveForSilverHero() {
   return (
-<section className="bg-[#FAF7F3] pt-2 pb-2 overflow-hidden">
+<section className="bg-[#FAF7F3] pt-2 pb-20 sm:pb-28 overflow-hidden">
       
       {/* HEADER */}
 <div className="relative mx-auto max-w-6xl px-2 pt-1 text-center">

@@ -19,6 +19,8 @@ import FounderNote from "@/components/FounderNote";
 import LatestCollection from "@/components/LatestCollection";
 import WhyLoveSilver from "@/components/WhyLoveSilver";
 import WhyLoveForSilverHero from "@/components/WhyLoveForSilverHero";
+import IntentBeliefSection from "@/components/IntentBeliefSection";
+import SilverStoriesShared from "@/components/SilverStoriesShared";
 
 
 export default function Home() {
@@ -48,13 +50,11 @@ export default function Home() {
             <FounderNote />
             <LatestCollection/>
             <WhyLoveSilver/>
-            <WhyLoveForSilverHero/>
+            <IntentBeliefSection/>
+            <SilverStoriesShared/>
 
 
-            <CollectionHighlight/>
-            <RightImageSection    />
-            <PoetryInPolishSlider/>
-            <SilverStoriesSharedSection />
+          
             <Footer/>
           </main>
         </motion.div>

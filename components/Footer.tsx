@@ -1,112 +1,115 @@
 "use client";
 
-import Link from "next/link";
-import { FaInstagram, FaPinterestP } from "react-icons/fa";
-import { HiOutlineMail } from "react-icons/hi";
+import Image from "next/image";
+import { Instagram, Mail } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
-export default function Footer() {
+export default function FooterNav() {
   return (
-    <footer id="contact" className="w-full bg-white text-[#d6b28a]">
-      {/* top divider */}
-      <div className="h-px w-full bg-[#d6b28a]/40" />
+    <footer className="bg-[#FAF7F3]">
 
-      {/* main */}
-      <div className="mx-auto max-w-6xl px-5 sm:px-6 py-14 sm:py-16">
-        <div className="grid grid-cols-1 gap-12 md:gap-14 md:grid-cols-2">
-          {/* LEFT */}
-          <div className="space-y-8">
-            <p className="text-[16px] sm:text-[17px] leading-relaxed text-[#d6b28a]">
-              For all inquiries, please write to{" "}
-              <a
-                href="mailto:contact@poetrydubai.com"
-                className="underline decoration-[#d6b28a]/60 underline-offset-4 hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d6b28a]/40"
-              >
-                support@poetrydubai.com
-              </a>
-            </p>
+      {/* INSTAGRAM STRIP */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 sm:pt-20">
+        <h3 className="font-serif text-2xl sm:text-3xl text-[#8F2C1C] mb-8 sm:mb-10 text-center sm:text-left">
+          Follow us on instagram to view our latest collection-
+        </h3>
 
-            <p className="text-sm text-[#d6b28a]/85 max-w-md leading-relaxed">
-              Anantara Downtown Hotel Dubai <br />
-              Business Bay, Dubai, UAE <br />
-              Phone:{" "}
-              <a
-                href="tel:+971563956179"
-                className="underline decoration-[#d6b28a]/40 underline-offset-4 hover:opacity-80"
-              >
-                +971 56 395 6179
-              </a>
-              <br />
-              
-            </p>
-
-            {/* SOCIAL ICONS */}
-            <div className="flex gap-4 sm:gap-5">
-              <a
-                className="inline-flex items-center justify-center rounded-md border border-[#d6b28a]/70 p-3 hover:bg-[#d6b28a]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d6b28a]/40"
-                href="https://www.instagram.com/poetrydubai/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Poetry Dubai on Instagram"
-              >
-                <FaInstagram />
-              </a>
-
-              <a
-                className="inline-flex items-center justify-center rounded-md border border-[#d6b28a]/70 p-3 hover:bg-[#d6b28a]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d6b28a]/40"
-                href="https://www.pinterest.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Poetry Dubai on Pinterest"
-              >
-                <FaPinterestP />
-              </a>
-
-              <a
-                className="inline-flex items-center justify-center rounded-md border border-[#d6b28a]/70 p-3 hover:bg-[#d6b28a]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d6b28a]/40"
-                href="mailto:contact@poetrydubai.com"
-                aria-label="Email Poetry Dubai"
-              >
-                <HiOutlineMail />
-              </a>
-            </div>
-
-            {/* MAP */}
-            <div className="mt-8 overflow-hidden rounded-xl border border-[#d6b28a]/40">
-              <iframe
-                title="Poetry Dubai Location"
-                src="https://www.google.com/maps?q=Anantara%20Downtown%20Dubai&output=embed"
-                className="h-56 w-full"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+          {[
+            "/collection-1.webp",
+            "/collection-2.webp",
+            "/collection-3.webp",
+            "/collection-4.webp",
+          ].map((img, i) => (
+            <div key={i} className="relative aspect-square">
+              <Image
+                src={img}
+                alt="Instagram preview"
+                fill
+                className="object-cover"
               />
             </div>
-          </div>
-
-          {/* RIGHT: PAGES */}
-          <div className="border-[#d6b28a]/40 pt-10 md:pt-0 md:border-l md:pl-12 flex items-center justify-center border-t md:border-t-0">
-            <div className="text-center">
-              <h3 className="mb-8 font-serif text-3xl text-[#d6b28a]">Pages</h3>
-
-              <nav className="flex flex-col gap-4 text-lg text-[#d6b28a]/85">
-                <Link href="/">Home</Link>
-                <a href="#collections">Collections</a>
-                <Link href="/bar">Accessories</Link>
-                <Link href="/gifting">Gifting</Link>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
-              </nav>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 
-      {/* bottom divider */}
-      <div className="h-px w-full bg-[#d6b28a]/40" />
+      {/* FOOTER */}
+      <div className="mt-16 sm:mt-20 bg-[#8F2C1C] text-[#FAF7F3]">
+        <div
+          className="
+            max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-14
+            grid grid-cols-1 md:grid-cols-3
+            gap-12 md:gap-0
+            relative
+          "
+        >
 
-      {/* copyright */}
-      <div className="py-6 text-center text-sm text-[#d6b28a]/75">
-        © Poetry Dubai 2025. All Rights Reserved.
+          {/* LEFT */}
+          <div className="font-serif space-y-3 text-center md:text-left">
+            <a className="block underline">Our Story</a>
+            <a className="block underline">All Collections</a>
+            <a className="block underline">Gifts and Guides</a>
+
+            <div className="flex justify-center md:justify-start gap-6 pt-6">
+              <Instagram size={32} />
+              <FaWhatsapp size={32} />
+              <Mail size={32} />
+            </div>
+          </div>
+
+          {/* DIVIDER */}
+          <div className="hidden md:block absolute left-1/3 top-10 bottom-10 w-px bg-[#FAF7F3]/60" />
+
+          {/* CENTER */}
+          <div className="text-center font-serif space-y-4 px-2 sm:px-6">
+            <p className="text-lg sm:text-xl">
+              Exquisite experiences await in <br />
+              the heart of your home!
+            </p>
+
+            <p className="italic text-lg sm:text-xl">With love,</p>
+
+            <p
+              className="italic text-2xl sm:text-3xl"
+              style={{ fontFamily: "Alex Brush" }}
+            >
+              Mehul Agarwal
+            </p>
+          </div>
+
+          {/* DIVIDER */}
+          <div className="hidden md:block absolute right-1/3 top-10 bottom-10 w-px bg-[#FAF7F3]/60" />
+
+          {/* RIGHT */}
+          <div className="font-serif text-sm space-y-3 text-center md:text-right">
+            <p>
+              For all inquiries, please write to <br />
+              <span className="underline">support@poetrydubai.com</span>
+            </p>
+
+            <p>
+              Anantara Downtown Hotel Dubai <br />
+              Business Bay, Dubai, UAE
+            </p>
+
+            <p>Phone: +971 56 395 6179</p>
+
+            {/* MAP */}
+            <div className="flex justify-center md:justify-end pt-4">
+              <div className="w-full max-w-xs h-32 rounded overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps?q=Anantara+Downtown+Hotel+Dubai&output=embed"
+                  width="100%"
+                  height="100%"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="border-0"
+                />
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </footer>
   );
