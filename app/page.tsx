@@ -16,6 +16,7 @@ import SilverStoriesSharedSection from "@/components/SilverStoriesSharedSection"
 import Footer from "@/components/Footer";
 import BrandStrap from "@/components/BrandStrap";
 import FounderNote from "@/components/FounderNote";
+import LatestCollection from "@/components/LatestCollection";
 
 
 export default function Home() {
@@ -43,6 +44,7 @@ export default function Home() {
           <main>
             <Hero />
             <FounderNote />
+            <LatestCollection/>
             <StorySection/>
             <CollectionHighlight/>
             <RightImageSection    />

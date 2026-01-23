@@ -18,7 +18,7 @@ export default function FounderNote() {
         className="absolute right-6 bottom-6 sm:right-16 sm:bottom-16 w-32 sm:w-44 lg:w-56 pointer-events-none"
       >
         <Image
-          src="/hibiscus.webp"
+          src="/Founderpage_flower.png"
           alt="Poetry flower illustration"
           width={300}
           height={300}
