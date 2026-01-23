@@ -17,6 +17,8 @@ import Footer from "@/components/Footer";
 import BrandStrap from "@/components/BrandStrap";
 import FounderNote from "@/components/FounderNote";
 import LatestCollection from "@/components/LatestCollection";
+import WhyLoveSilver from "@/components/WhyLoveSilver";
+import WhyLoveForSilverHero from "@/components/WhyLoveForSilverHero";
 
 
 export default function Home() {
@@ -45,7 +47,10 @@ export default function Home() {
             <Hero />
             <FounderNote />
             <LatestCollection/>
-         
+            <WhyLoveSilver/>
+            <WhyLoveForSilverHero/>
+
+
             <CollectionHighlight/>
             <RightImageSection    />
             <PoetryInPolishSlider/>
