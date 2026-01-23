@@ -45,7 +45,7 @@ export default function Home() {
             <Hero />
             <FounderNote />
             <LatestCollection/>
-            <StorySection/>
+         
             <CollectionHighlight/>
             <RightImageSection    />
             <PoetryInPolishSlider/>
