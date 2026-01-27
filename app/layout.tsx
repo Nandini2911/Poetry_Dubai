@@ -1,6 +1,7 @@
 import WhatsAppButton from "@/components/WhatsAppButton";
 import "./globals.css";
 import { Playfair_Display } from "next/font/google";
+import InstagramButton from "@/components/InstagramButton";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -18,6 +19,7 @@ export default function RootLayout({
       <body>
         {children}
         <WhatsAppButton />
+        <InstagramButton/>
       </body>
     </html>
   );
