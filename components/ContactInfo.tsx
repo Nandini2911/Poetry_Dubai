@@ -33,7 +33,7 @@ const items = [
   {
     icon: MapPin,
     title: "VISIT US",
-    description: "Poetry Website",
+    description: "Find your nearest boutique or\nPoetry Website",
     action: "Find a boutique",
     href: "https://www.google.com/maps?q=Anantara+Downtown+Hotel+Dubai",
   },
@@ -45,6 +45,7 @@ const items = [
   action: "Book an appointment",
   href: "https://wa.me/971563956179?text=I%20would%20like%20to%20book%20an%20appointment",
 },
+
   {
     icon: HelpCircle,
     title: "FAQ",
