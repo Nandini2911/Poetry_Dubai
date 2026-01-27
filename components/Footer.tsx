@@ -1,13 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { Instagram, Mail } from "lucide-react";
+import { Instagram, Mail, Phone } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
 export default function FooterNav() {
   return (
     <footer className="bg-[#FAF7F3]">
-
       {/* INSTAGRAM STRIP */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 sm:pt-20">
         <h3 className="font-serif text-2xl sm:text-3xl text-[#8F2C1C] mb-8 sm:mb-10 text-center sm:text-left">
@@ -35,25 +34,40 @@ export default function FooterNav() {
 
       {/* FOOTER */}
       <div className="mt-16 sm:mt-20 bg-[#8F2C1C] text-[#FAF7F3]">
-        <div
-          className="
-            max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-14
-            grid grid-cols-1 md:grid-cols-3
-            gap-12 md:gap-0
-            relative
-          "
-        >
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-14 grid grid-cols-1 md:grid-cols-3 gap-12 relative">
 
           {/* LEFT */}
           <div className="font-serif space-y-3 text-center md:text-left">
-            <a className="block underline">Our Story</a>
-            <a className="block underline">All Collections</a>
-            <a className="block underline">Gifts and Guides</a>
+            <a className="block underline cursor-pointer">Our Story</a>
+            <a className="block underline cursor-pointer">All Collections</a>
+            <a className="block underline cursor-pointer">Gifts and Guides</a>
 
+            {/* SOCIAL ICONS */}
             <div className="flex justify-center md:justify-start gap-6 pt-6">
-              <Instagram size={32} />
-              <FaWhatsapp size={32} />
-              <Mail size={32} />
+              <a
+                href="https://www.instagram.com/poetrydubai?igsh=MWc3OG54NDFkZ3R3dw%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
+                <Instagram size={32} />
+              </a>
+
+              <a
+                href="https://wa.me/971563956179"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+              >
+                <FaWhatsapp size={32} />
+              </a>
+
+              <a
+                href="mailto:support@poetrydubai.com"
+                aria-label="Email"
+              >
+                <Mail size={32} />
+              </a>
             </div>
           </div>
 
@@ -84,7 +98,12 @@ export default function FooterNav() {
           <div className="font-serif text-sm space-y-3 text-center md:text-right">
             <p>
               For all inquiries, please write to <br />
-              <span className="underline">support@poetrydubai.com</span>
+              <a
+                href="mailto:support@poetrydubai.com"
+                className="underline"
+              >
+                support@poetrydubai.com
+              </a>
             </p>
 
             <p>
@@ -92,7 +111,12 @@ export default function FooterNav() {
               Business Bay, Dubai, UAE
             </p>
 
-            <p>Phone: +971 56 395 6179</p>
+            <p>
+              Phone:{" "}
+              <a href="tel:+971563956179" className="underline">
+                +971 56 395 6179
+              </a>
+            </p>
 
             {/* MAP */}
             <div className="flex justify-center md:justify-end pt-4">

@@ -8,7 +8,7 @@ const navItems = [
   { label: "COLLECTION", href: "#collections" },
   { label: "GIFTING", href: "/gifting" },
   { label: "ABOUT", href: "#about" },
-  { label: "CONTACT", href: "#contact" },
+  { label: "CONTACT", href: "/contact" },
 ];
 
 export default function Navbar() {

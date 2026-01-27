@@ -1,3 +1,4 @@
+import WhatsAppButton from "@/components/WhatsAppButton";
 import "./globals.css";
 import { Playfair_Display } from "next/font/google";
 
@@ -14,7 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={playfair.variable}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <WhatsAppButton />
+      </body>
     </html>
   );
 }
