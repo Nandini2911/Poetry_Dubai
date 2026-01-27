@@ -33,18 +33,18 @@ const items = [
   {
     icon: MapPin,
     title: "VISIT US",
-    description: "Find your nearest boutique or\nCartier reseller",
+    description: "Poetry Website",
     action: "Find a boutique",
     href: "https://www.google.com/maps?q=Anantara+Downtown+Hotel+Dubai",
   },
   {
-    icon: Calendar,
-    title: "APPOINTMENTS",
-    description:
-      "Join us for a personalized appointment\nat the boutique of your choice",
-    action: "Request an appointment",
-    href: "https://wa.me/971563956179?text=I%20would%20like%20to%20book%20an%20appointment",
-  },
+  icon: Calendar,
+  title: "APPOINTMENTS",
+  description:
+    "Book a personalized appointment\nat our exclusive store",
+  action: "Book an appointment",
+  href: "https://wa.me/971563956179?text=I%20would%20like%20to%20book%20an%20appointment",
+},
   {
     icon: HelpCircle,
     title: "FAQ",
