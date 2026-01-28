@@ -34,9 +34,9 @@ export default function AppointmentModal({ open, onClose }: Props) {
       if (res.ok) {
         setSuccess(true);
       } else {
-        alert("Something went wrong. Please try again.");
+        alert("Mail failed. Please try again.");
       }
-    } catch (err) {
+    } catch (error) {
       alert("Server error. Please try again.");
     }
 
