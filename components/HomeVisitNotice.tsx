@@ -6,12 +6,15 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 export default function HomeVisitCard() {
   return (
-    <div className="bg-[#FAF7F3] px-4 sm:px-6 pt-10 sm:pt-14">
+    <div className="bg-[#FAF7F3] px-4 sm:px-6 pt-10 sm:pt-14 overflow-hidden">
       <motion.div
-        initial={{ opacity: 0, y: 14 }}
+        initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 1, ease: EASE }}
+        transition={{
+          duration: 1,
+          ease: EASE,
+        }}
         className="
           relative
           mx-auto
@@ -26,13 +29,23 @@ export default function HomeVisitCard() {
           bg-white
         "
       >
-        {/* FULL BOX SOFT RED FADE */}
+        {/* FULL BOX SOFT RED FADE — ALL SIDES */}
         <div
           aria-hidden
           className="
             pointer-events-none
             absolute inset-0
-            bg-[radial-gradient(120%_120%_at_50%_0%,rgba(143,44,28,0.18),transparent_60%)]
+            bg-[radial-gradient(circle_at_center,rgba(143,44,28,0.20),transparent_60%)]
+          "
+        />
+
+        {/* secondary soft glow for depth */}
+        <div
+          aria-hidden
+          className="
+            pointer-events-none
+            absolute inset-0
+            bg-[radial-gradient(120%_120%_at_50%_50%,rgba(143,44,28,0.10),transparent_70%)]
           "
         />
 
@@ -71,7 +84,7 @@ export default function HomeVisitCard() {
 
           {/* helper text */}
           <p className="mt-4 text-xs sm:text-sm tracking-wide text-black/55">
-            Prior appointment only • Limited slots
+            Prior appointment only
           </p>
         </div>
       </motion.div>
