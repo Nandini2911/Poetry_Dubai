@@ -7,18 +7,11 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 
 import SplashScreen from "@/components/SplashScreen";
-
-import StorySection from "@/components/StorySection";
-import CollectionHighlight from "@/components/Collections section";
-import RightImageSection from "@/components/RightImageSection";
-import PoetryInPolishSlider from "@/components/PoetryInPolishSlider";
-import SilverStoriesSharedSection from "@/components/SilverStoriesSharedSection";
 import Footer from "@/components/Footer";
 import BrandStrap from "@/components/BrandStrap";
 import FounderNote from "@/components/FounderNote";
 import LatestCollection from "@/components/LatestCollection";
 import WhyLoveSilver from "@/components/WhyLoveSilver";
-import WhyLoveForSilverHero from "@/components/WhyLoveForSilverHero";
 import IntentBeliefSection from "@/components/IntentBeliefSection";
 import SilverStoriesShared from "@/components/SilverStoriesShared";
 
@@ -52,9 +45,6 @@ export default function Home() {
             <WhyLoveSilver/>
             <IntentBeliefSection/>
             <SilverStoriesShared/>
-
-
-          
             <Footer/>
           </main>
         </motion.div>

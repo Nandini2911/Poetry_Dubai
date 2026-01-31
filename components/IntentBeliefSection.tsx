@@ -97,8 +97,7 @@ export default function IntentBeliefSection() {
             </div>
 
             <p className="font-serif text-base sm:text-lg leading-relaxed text-[#FAF7F3] max-w-sm">
-              Not vastu, not ritual — just mindful creation rooted in centuries
-              of belief.
+             Placed with care, they don’t simply adorn a space; they quietly transform how it feels.
             </p>
           </motion.div>
 

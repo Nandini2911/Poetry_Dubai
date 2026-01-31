@@ -20,7 +20,7 @@ export default function SilverStoriesBg() {
         className="relative w-full max-w-6xl h-[95vh] px-6"
       >
         <Image
-          src="/Poetry website deck.png"
+          src="/silverstoryshared.webp"
           alt="Poetry silver background"
           fill
           priority
