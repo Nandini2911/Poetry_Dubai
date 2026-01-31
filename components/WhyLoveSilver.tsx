@@ -16,10 +16,8 @@ const images = [
 export default function WhyLoveSilver() {
   return (
     <section className="bg-[#FAF7F3] pt-16 sm:pt-20 pb-0 overflow-hidden">
-
       {/* HEADER */}
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 text-center">
-
         {/* Flower */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -27,14 +25,8 @@ export default function WhyLoveSilver() {
           viewport={{ once: true }}
           transition={{ duration: 1, ease: EASE }}
           className="
-            relative
-            mx-auto mb-4
-            w-20
-
-            sm:absolute sm:mb-0
-            sm:left-0 sm:top-0
-            sm:w-32
-
+            relative mx-auto mb-4 w-20
+            sm:absolute sm:mb-0 sm:left-0 sm:top-0 sm:w-32
             lg:w-40
           "
         >
@@ -55,12 +47,8 @@ export default function WhyLoveSilver() {
           viewport={{ once: true }}
           transition={{ duration: 1.2, ease: EASE }}
           className="
-            font-serif
-            text-2xl
-            sm:text-3xl
-            lg:text-5xl
-            tracking-wide
-            text-[#8F2C1C]
+            font-serif text-2xl sm:text-3xl lg:text-5xl
+            tracking-wide text-[#8F2C1C]
           "
         >
           WHY LOVE FOR SILVER?
@@ -93,26 +81,16 @@ export default function WhyLoveSilver() {
         viewport={{ once: true }}
         transition={{ duration: 1.2, ease: EASE, delay: 0.3 }}
         className="
-          mt-6
-          mb-2
-          mx-auto
-          max-w-6xl
-          px-6
-          text-center
-          font-serif
-          text-xl
-          sm:text-3xl
-          text-[#8F2C1C]
+          mt-6 mb-2 mx-auto max-w-6xl px-6 text-center
+          font-serif text-xl sm:text-3xl text-[#8F2C1C]
         "
         style={{ fontFamily: "Alex Brush" }}
-      >
-        Poetry in polish
-      </motion.h3>
+      />
 
-      {/* SLIDING IMAGE STRIP */}
-      <div className="relative overflow-hidden">
+      {/* SLIDING IMAGE STRIP (shifted upward slightly) */}
+      <div className="relative overflow-hidden pt-2 pb-2 sm:pb-4 -mt-4 sm:-mt-6">
         <motion.div
-          className="flex w-max gap-4 sm:gap-6"
+          className="flex w-max gap-4 sm:gap-6 items-center"
           animate={{ x: ["0%", "-50%"] }}
           transition={{
             duration: 40,
@@ -124,18 +102,17 @@ export default function WhyLoveSilver() {
             <div
               key={i}
               className="
-                relative
-                h-[260px] w-[200px]
-                sm:h-[360px] sm:w-[280px]
-                lg:h-[420px] lg:w-[320px]
+                relative flex items-center justify-center
+                h-[260px] sm:h-[340px] lg:h-[400px]
+                w-[200px] sm:w-[280px] lg:w-[320px]
                 flex-shrink-0
-                overflow-hidden
               "
             >
               <Image
                 src={src}
                 alt="Poetry silver craft"
                 fill
+                sizes="(max-width: 640px) 200px, (max-width: 1024px) 280px, 320px"
                 className="object-contain object-center"
               />
             </div>

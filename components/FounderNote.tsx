@@ -59,7 +59,7 @@ export default function FounderNote() {
             xl:text-[1.65rem] 2xl:text-3xl
           "
         >
-          I envisioned a brand where every silver piece is created with
+          I envisioned a brand where every piece is created with
           intention—designed to be lived with, not just admired. Inspired by a
           cherished silver kettle that became part of my everyday life, I
           understood how objects can hold memory and meaning.
