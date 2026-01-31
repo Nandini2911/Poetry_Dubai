@@ -14,6 +14,7 @@ import LatestCollection from "@/components/LatestCollection";
 import WhyLoveSilver from "@/components/WhyLoveSilver";
 import IntentBeliefSection from "@/components/IntentBeliefSection";
 import SilverStoriesShared from "@/components/SilverStoriesShared";
+import HomeVisitNotice from "@/components/HomeVisitNotice";
 
 
 export default function Home() {
@@ -45,6 +46,7 @@ export default function Home() {
             <WhyLoveSilver/>
             <IntentBeliefSection/>
             <SilverStoriesShared/>
+            <HomeVisitNotice/>
             <Footer/>
           </main>
         </motion.div>

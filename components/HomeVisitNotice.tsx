@@ -71,7 +71,7 @@ export default function HomeVisitCard() {
 
           {/* helper text */}
           <p className="mt-4 text-xs sm:text-sm tracking-wide text-black/55">
-            Prior appointment only • Limited slots
+            Prior appointment only 
           </p>
         </div>
       </motion.div>
