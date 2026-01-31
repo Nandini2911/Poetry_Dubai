@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import {
   Phone,
   Mail,
@@ -10,6 +11,8 @@ import {
   MessageSquare,
 } from "lucide-react";
 import AppointmentModal from "./AppointmentModal";
+
+const EASE = [0.22, 1, 0.36, 1] as const;
 
 const ContactInfo = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -33,7 +36,7 @@ const ContactInfo = () => {
     {
       icon: MessageCircle,
       title: "POETRY FOR YOU – MESSAGE US",
-      description: "A brand executuive will assist you on WhatsApp",
+      description: "A brand executive will assist you on WhatsApp",
       action: "Send a message",
       href: "https://wa.me/971563956179",
     },
@@ -64,11 +67,19 @@ const ContactInfo = () => {
 
   return (
     <>
-      <section className="bg-[#8F2C1C] text-white">
+      <section className="bg-[#8F2C1C] text-white overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 py-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-20">
           {items.map((item, i) => (
-            <div
+            <motion.div
               key={i}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.9,
+                ease: EASE,
+                delay: i * 0.08, // subtle stagger
+              }}
               className="flex flex-col justify-between min-h-[180px]"
             >
               <div>
@@ -107,7 +118,7 @@ const ContactInfo = () => {
               </div>
 
               <div className="mt-10 h-px w-full bg-white/30" />
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
