@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import {
   Phone,
   Mail,
@@ -9,13 +8,12 @@ import {
   MapPin,
   Calendar,
   MessageSquare,
+  X,
 } from "lucide-react";
-import AppointmentModal from "./AppointmentModal";
-
-const EASE = [0.22, 1, 0.36, 1] as const;
 
 const ContactInfo = () => {
-  const [openModal, setOpenModal] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const items = [
     {
@@ -50,10 +48,9 @@ const ContactInfo = () => {
     {
       icon: Calendar,
       title: "APPOINTMENTS",
-      description:
-        "Book a personalized appointment\nat our exclusive store",
+      description: "Book a personalized appointment\nat our exclusive store",
       action: "Book an appointment",
-      onClick: () => setOpenModal(true),
+      onClick: () => setOpen(true),
     },
     {
       icon: MessageSquare,
@@ -65,23 +62,43 @@ const ContactInfo = () => {
     },
   ];
 
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setLoading(true);
+
+    const form = e.currentTarget;
+
+    const data = {
+      name: (form.elements.namedItem("name") as HTMLInputElement).value,
+      email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      contact: (form.elements.namedItem("contact") as HTMLInputElement).value,
+    };
+
+    try {
+      const res = await fetch("/api/appointment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) throw new Error("Failed");
+
+      alert("Appointment request sent successfully ✅");
+      form.reset();
+      setOpen(false);
+    } catch (error) {
+      alert("Something went wrong. Please try again ❌");
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <>
       <section className="bg-[#8F2C1C] text-white overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 py-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-20">
           {items.map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.9,
-                ease: EASE,
-                delay: i * 0.08, // subtle stagger
-              }}
-              className="flex flex-col justify-between min-h-[180px]"
-            >
+            <div key={i} className="flex flex-col justify-between min-h-[180px]">
               <div>
                 <item.icon className="w-5 h-5 mb-4" />
 
@@ -93,40 +110,82 @@ const ContactInfo = () => {
                   {item.description}
                 </p>
 
-                {item.action &&
-                  (item.onClick ? (
-                    <button
-                      onClick={item.onClick}
-                      className="inline-flex items-center gap-1 text-sm tracking-wide hover:opacity-80 transition"
-                    >
-                      {item.action}
-                      <span aria-hidden>↗</span>
-                    </button>
-                  ) : (
-                    <a
-                      href={item.href}
-                      target={
-                        item.href?.startsWith("http") ? "_blank" : undefined
-                      }
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-sm tracking-wide hover:opacity-80 transition"
-                    >
-                      {item.action}
-                      <span aria-hidden>↗</span>
-                    </a>
-                  ))}
+                {item.onClick ? (
+                  <button
+                    onClick={item.onClick}
+                    className="inline-flex items-center gap-1 text-sm tracking-wide hover:opacity-80 transition"
+                  >
+                    {item.action} <span>↗</span>
+                  </button>
+                ) : (
+                  <a
+                    href={item.href}
+                    target={item.href?.startsWith("http") ? "_blank" : undefined}
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-sm tracking-wide hover:opacity-80 transition"
+                  >
+                    {item.action} <span>↗</span>
+                  </a>
+                )}
               </div>
 
               <div className="mt-10 h-px w-full bg-white/30" />
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
 
-      <AppointmentModal
-        open={openModal}
-        onClose={() => setOpenModal(false)}
-      />
+      {/* POPUP */}
+      {open && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
+          <div className="bg-white text-black w-full max-w-md p-8 relative">
+            <button
+              onClick={() => setOpen(false)}
+              className="absolute top-4 right-4 text-black/60 hover:text-black"
+            >
+              <X size={20} />
+            </button>
+
+            <h2 className="text-xl tracking-widest uppercase mb-6">
+              Book Appointment
+            </h2>
+
+            <form className="space-y-5" onSubmit={handleSubmit}>
+              <input
+                name="name"
+                type="text"
+                placeholder="Your Name"
+                required
+                className="w-full border border-black/30 px-4 py-3 outline-none"
+              />
+
+              <input
+                name="email"
+                type="email"
+                placeholder="Email Address"
+                required
+                className="w-full border border-black/30 px-4 py-3 outline-none"
+              />
+
+              <input
+                name="contact"
+                type="tel"
+                placeholder="Contact Number"
+                required
+                className="w-full border border-black/30 px-4 py-3 outline-none"
+              />
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full bg-[#8F2C1C] text-white py-3 tracking-wide hover:opacity-90 transition disabled:opacity-50"
+              >
+                {loading ? "Sending..." : "Submit"}
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </>
   );
 };
