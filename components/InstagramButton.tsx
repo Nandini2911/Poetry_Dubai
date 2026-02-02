@@ -1,8 +1,17 @@
 "use client";
 
-import { Instagram } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export default function InstagramButton() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // ⛔ Prevent SSR render → no hydration mismatch
+  if (!mounted) return null;
+
   return (
     <a
       href="https://www.instagram.com/poetrydubai?igsh=MWc3OG54NDFkZ3R3dw%3D%3D"
@@ -13,21 +22,33 @@ export default function InstagramButton() {
         fixed
         bottom-24
         right-6
-        z-50
+        z-40
         flex
+        h-12
+        w-12
         items-center
         justify-center
-        w-14
-        h-14
         rounded-full
-        bg-gradient-to-tr from-pink-500 via-red-500 to-yellow-500
-        text-white
+        bg-white
+        text-[#8F2C1C]
         shadow-lg
-        hover:scale-105
+        ring-1
+        ring-black/10
         transition
+        hover:scale-105
       "
     >
-      <Instagram size={26} />
+      {/* Instagram Icon */}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        className="h-5 w-5"
+      >
+        <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2z" />
+        <path d="M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10z" />
+        <circle cx="17.5" cy="6.5" r="1" />
+      </svg>
     </a>
   );
 }
