@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { Instagram, Mail, Phone } from "lucide-react";
+import Link from "next/link";
+import { Instagram, Mail } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
 export default function FooterNav() {
@@ -20,7 +21,7 @@ export default function FooterNav() {
             "/collection-3.webp",
             "/collection-4.webp",
           ].map((img, i) => (
-            <div key={i} className="relative aspect-square">
+            <div key={i} className="relative aspect-square overflow-hidden">
               <Image
                 src={img}
                 alt="Instagram preview"
@@ -38,14 +39,20 @@ export default function FooterNav() {
 
           {/* LEFT */}
           <div className="font-serif space-y-3 text-center md:text-left">
-            <a className="block underline cursor-pointer">Our Story</a>
-            <a className="block underline cursor-pointer">All Collections</a>
-            <a className="block underline cursor-pointer">Gifts and Guides</a>
+            <Link href="/our-story" className="block underline">
+              Our Story
+            </Link>
+            <Link href="/collections" className="block underline">
+              All Collections
+            </Link>
+            <Link href="/gifts-guides" className="block underline">
+              Gifts and Guides
+            </Link>
 
             {/* SOCIAL ICONS */}
             <div className="flex justify-center md:justify-start gap-6 pt-6">
               <a
-                href="https://www.instagram.com/poetrydubai?igsh=MWc3OG54NDFkZ3R3dw%3D%3D"
+                href="https://www.instagram.com/poetrydubai"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
@@ -71,8 +78,9 @@ export default function FooterNav() {
             </div>
           </div>
 
-          {/* DIVIDER */}
+          {/* DIVIDERS */}
           <div className="hidden md:block absolute left-1/3 top-10 bottom-10 w-px bg-[#FAF7F3]/60" />
+          <div className="hidden md:block absolute right-1/3 top-10 bottom-10 w-px bg-[#FAF7F3]/60" />
 
           {/* CENTER */}
           <div className="text-center font-serif space-y-4 px-2 sm:px-6">
@@ -90,9 +98,6 @@ export default function FooterNav() {
               Mehul Agarwal
             </p>
           </div>
-
-          {/* DIVIDER */}
-          <div className="hidden md:block absolute right-1/3 top-10 bottom-10 w-px bg-[#FAF7F3]/60" />
 
           {/* RIGHT */}
           <div className="font-serif text-sm space-y-3 text-center md:text-right">
