@@ -24,14 +24,14 @@ export default function IntentBeliefSection() {
 
   return (
     <section className="py-20">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-9">
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
           {slides[index].map((img, i) => (
             <div
               key={i}
-              className="relative w-full h-64 md:h-80 overflow-hidden rounded-2xl shadow-xl"
+              className="relative w-full h-70 md:h-90 overflow-hidden rounded-2xl shadow-xl"
             >
               <motion.div
                 key={img}
