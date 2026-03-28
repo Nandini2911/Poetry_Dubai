@@ -1,49 +1,41 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 export default function Hero() {
   return (
-    <section className="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen min-h-svh overflow-hidden">
+   <section className="relative w-screen h-[120vh] overflow-hidden">
       
-      {/* Background Image */}
+      {/* VIDEO BACKGROUND */}
       <motion.div
         initial={{ scale: 1.08, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1.8, ease: EASE }}
-        className="absolute inset-0"
+        className="absolute inset-0 z-0"
       >
-        <Image
-          src="/hero_img.JPG"
-          alt="Poetry Dubai silver craftsmanship"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-top"
-        />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src="/hero_video.mp4" type="video/mp4" />
+        </video>
       </motion.div>
 
-      {/* Dark Luxury Overlay */}
+      {/* DARK OVERLAY */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.35 }}
-        transition={{ duration: 1.6, ease: EASE }}
-        className="absolute inset-0 bg-black"
+        animate={{ opacity: 0.4 }}
+        transition={{ duration: 1.5, ease: EASE }}
+        className="absolute inset-0 bg-black z-10"
       />
 
-      {/* Content */}
-      <div className="relative z-10 flex min-h-svh items-center px-6 sm:px-12">
-        <div className="max-w-2xl">
-          
-         
+      
 
-          {/* Subtext */}
-          
-        </div>
-      </div>
     </section>
   );
 }

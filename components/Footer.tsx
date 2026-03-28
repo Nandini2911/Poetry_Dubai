@@ -7,7 +7,8 @@ import { FaWhatsapp } from "react-icons/fa";
 
 export default function FooterNav() {
   return (
-    <footer className="bg-[#FAF7F3]">
+    <footer className="">
+      
       {/* INSTAGRAM STRIP */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 sm:pt-20">
         <h3 className="font-serif text-2xl sm:text-3xl text-[#8F2C1C] mb-8 sm:mb-10 text-center sm:text-left">
@@ -16,19 +17,49 @@ export default function FooterNav() {
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
           {[
-            "/collection-1.webp",
-            "/collection-2.webp",
-            "/collection-3.webp",
-            "/collection-4.webp",
-          ].map((img, i) => (
-            <div key={i} className="relative aspect-square overflow-hidden">
+            {
+              img: "/insta1.jpg",
+              link: "https://www.instagram.com/p/DUvEasoirsw/?igsh=bnRseHA0a25rZWJj",
+            },
+            {
+              img: "/insta2.jpg",
+              link: "https://www.instagram.com/p/DUGFoG6Crbr/?igsh=ZGNldDdhbWtuZG41",
+            },
+            {
+              img: "/insta3.jpg",
+              link: "https://www.instagram.com/p/DUsMmrHAVDo/?igsh=MTg5cTcxMzdidHNuMg==",
+            },
+            {
+              img: "/insta4.jpg",
+              link: "https://www.instagram.com/p/DU0OaueAfTq/?igsh=MTJtdTA3c3d2Y2U5dg==",
+            },
+          ].map((item, i) => (
+            
+            <a
+              key={i}
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative aspect-square overflow-hidden group block"
+            >
+              {/* IMAGE */}
               <Image
-                src={img}
+                src={item.img}
                 alt="Instagram preview"
                 fill
-                className="object-cover"
+                className="object-cover transition duration-500 group-hover:scale-105"
               />
-            </div>
+
+              {/* OVERLAY */}
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300" />
+
+              {/* ICON */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                <Instagram className="text-white drop-shadow-lg group-hover:scale-110 transition" size={28} />
+              </div>
+
+            </a>
+
           ))}
         </div>
       </div>
@@ -55,7 +86,6 @@ export default function FooterNav() {
                 href="https://www.instagram.com/poetrydubai"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Instagram"
               >
                 <Instagram size={32} />
               </a>
@@ -64,15 +94,11 @@ export default function FooterNav() {
                 href="https://wa.me/971563956179"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="WhatsApp"
               >
                 <FaWhatsapp size={32} />
               </a>
 
-              <a
-                href="mailto:support@poetrydubai.com"
-                aria-label="Email"
-              >
+              <a href="mailto:support@poetrydubai.com">
                 <Mail size={32} />
               </a>
             </div>
@@ -103,10 +129,7 @@ export default function FooterNav() {
           <div className="font-serif text-sm space-y-3 text-center md:text-right">
             <p>
               For all inquiries, please write to <br />
-              <a
-                href="mailto:support@poetrydubai.com"
-                className="underline"
-              >
+              <a href="mailto:support@poetrydubai.com" className="underline">
                 support@poetrydubai.com
               </a>
             </p>
@@ -131,7 +154,6 @@ export default function FooterNav() {
                   width="100%"
                   height="100%"
                   loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
                   className="border-0"
                 />
               </div>

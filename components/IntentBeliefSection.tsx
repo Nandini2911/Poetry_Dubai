@@ -1,107 +1,71 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
-const EASE = [0.22, 1, 0.36, 1] as const;
-
-// reusable animation
-const slideUp = {
-  hidden: { opacity: 0, y: 50 },
-  visible: (delay = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 1.2,
-      ease: EASE,
-      delay,
-    },
-  }),
-};
+const slides = [
+  ["/intent1.png", "/intent2.png", "/intent3.png"],
+  ["/intent4.png", "/intent5.png", "/intent6.png"],
+  ["/intent7.png", "/intent8.png", "/intent9.png"],
+  ["/intent10.png", "/intent11.png", "/intent12.png"],
+];
 
 export default function IntentBeliefSection() {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % slides.length);
+    }, 3500);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className="bg-[#8F2C1C] py-24 overflow-hidden">
-      <div className="mx-auto max-w-6xl px-6">
+    <section className="py-20">
+      <div className="max-w-6xl mx-auto px-6">
 
-        {/* GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-14 gap-y-16 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-          {/* LEFT COLUMN */}
-          <motion.div
-            variants={slideUp}
-            initial="hidden"
-            whileInView="visible"
-            custom={0}
-            viewport={{ once: true }}
-            className="flex flex-col space-y-6"
-          >
-            {/* IMAGE — FIRST ON MOBILE */}
-            <div className="relative w-full aspect-[5/3] order-1 md:order-none">
-              <Image
-                src="/whysec_1.webp"
-                alt="Poetry silver seating"
-                fill
-                className="object-cover"
-              />
+          {slides[index].map((img, i) => (
+            <div
+              key={i}
+              className="relative w-full h-64 md:h-80 overflow-hidden rounded-2xl shadow-xl"
+            >
+              <motion.div
+                key={img}
+                
+                // 🔥 ONLY BLUR TRANSITION (no disappear)
+                initial={{
+                  scale: 1.05,
+                  filter: "blur(8px)",
+                }}
+                animate={{
+                  scale: 1,
+                  filter: "blur(0px)",
+                }}
+                transition={{
+                  duration: 1.2,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src={img}
+                  alt="Poetry collection"
+                  fill
+                  className="object-cover"
+                />
+
+                {/* subtle overlay for richness */}
+                <div className="absolute inset-0 bg-black/5" />
+              </motion.div>
             </div>
-
-            {/* TEXT — AFTER IMAGE ON MOBILE */}
-            <p className="font-serif text-base sm:text-lg leading-relaxed text-[#FAF7F3] max-w-sm order-2 md:order-none">
-              From the strength of the lion to the serenity of the Laughing
-              Buddha, every piece is more than decor — it’s a vessel of
-              emotion, culture, and legacy.
-            </p>
-          </motion.div>
-
-          {/* CENTER COLUMN */}
-          <motion.div
-            variants={slideUp}
-            initial="hidden"
-            whileInView="visible"
-            custom={0.15}
-            viewport={{ once: true }}
-            className="flex flex-col items-center text-center space-y-10"
-          >
-            <p className="font-serif text-lg sm:text-xl leading-relaxed text-[#FAF7F3] max-w-md">
-              Every Poetry piece carries an intention: to welcome abundance,
-              harmony, and grace into the spaces we live
-            </p>
-
-            <div className="relative w-full max-w-md aspect-[5/3]">
-              <Image
-                src="/whysec_2.webp"
-                alt="Silver tiger sculpture"
-                fill
-                className="object-cover"
-              />
-            </div>
-          </motion.div>
-
-          {/* RIGHT COLUMN */}
-          <motion.div
-            variants={slideUp}
-            initial="hidden"
-            whileInView="visible"
-            custom={0.3}
-            viewport={{ once: true }}
-            className="space-y-8 text-left"
-          >
-            <div className="relative w-full aspect-[5/3]">
-              <Image
-                src="/whysec_6.webp"
-                alt="Laughing Buddha silver"
-                fill
-                className="object-cover"
-              />
-            </div>
-
-            <p className="font-serif text-base sm:text-lg leading-relaxed text-[#FAF7F3] max-w-sm">
-             Placed with care, they don’t simply adorn a space; they quietly transform how it feels.
-            </p>
-          </motion.div>
+          ))}
 
         </div>
+
       </div>
     </section>
   );

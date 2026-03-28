@@ -15,6 +15,9 @@ import WhyLoveSilver from "@/components/WhyLoveSilver";
 import IntentBeliefSection from "@/components/IntentBeliefSection";
 import SilverStoriesShared from "@/components/SilverStoriesShared";
 import HomeVisitNotice from "@/components/HomeVisitNotice";
+import SplitFadeSection from "@/components/SplitFadeSection";
+import FullImageCTA from "@/components/horse";
+import PoetryIntro from "@/components/PoetryIntro";
 
 
 export default function Home() {
@@ -41,7 +44,9 @@ export default function Home() {
           <Navbar />
           <main>
             <Hero />
-            <FounderNote />
+            <SplitFadeSection />
+            <FullImageCTA/>
+            <PoetryIntro/>
             <LatestCollection/>
             <WhyLoveSilver/>
             <IntentBeliefSection/>
