@@ -7,12 +7,14 @@ import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 
 const images = [
-  { src: "/kitchen/kitchen.jpg", title: "Serving Bowl" },
-  { src: "/kitchen/kitchen2.jpg", title: "Elegant Plate" },
-  { src: "/kitchen/kitchen3.jpg", title: "Dining Set" },
-  { src: "/kitchen/kitchen4.jpg", title: "Refined Tray" },
-  { src: "/kitchen/kitchen5.jpg", title: "Ceramic Form" },
-  { src: "/kitchen/kitchen6.jpg", title: "Minimal Serveware" },
+  { src: "/kitchen/kitchen.jpg", title: "Elegant Silver Tea Set" },
+  { src: "/kitchen/kitchen2.jpg", title: "Silver Tea Pot With Lapis" },
+  { src: "/kitchen/kitchen3.jpg", title: "Silver Kettle with Black accents" },
+  { src: "/kitchen/kitchen4.jpg", title: "Silver Tea Set" },
+  { src: "/kitchen/kitchen5.jpg", title: "Silver Tea Pot with Sugar" },
+  { src: "/kitchen/kitchen6.jpg", title: "Silver Kettle with Black accents" },
+  {src: "/kitchen/kitchen7.jpg", title: "Silver Tray with Floral Border"},
+  {src: "/kitchen/kitchen8.jpg", title: "Silver Kettle Set"}
 ];
 
 export default function ServewarePage() {
