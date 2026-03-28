@@ -7,12 +7,12 @@ import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 
 const images = [
-  "/kitchen/kitchen.jpg",
-  "/kitchen/kitchen2.jpg",
-  "/kitchen/kitchen3.jpg",
-  "/kitchen/kitchen4.jpg",
-  "/kitchen/kitchen5.jpg",
-  "/kitchen/kitchen6.jpg",
+  { src: "/kitchen/kitchen.jpg", title: "Serving Bowl" },
+  { src: "/kitchen/kitchen2.jpg", title: "Elegant Plate" },
+  { src: "/kitchen/kitchen3.jpg", title: "Dining Set" },
+  { src: "/kitchen/kitchen4.jpg", title: "Refined Tray" },
+  { src: "/kitchen/kitchen5.jpg", title: "Ceramic Form" },
+  { src: "/kitchen/kitchen6.jpg", title: "Minimal Serveware" },
 ];
 
 export default function ServewarePage() {
@@ -27,7 +27,12 @@ export default function ServewarePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center w-full max-w-7xl">
 
           {/* LEFT → TEXT */}
-          <div className="text-white text-center md:text-left">
+          <motion.div
+            initial={{ opacity: 0, x: -80 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            className="text-white text-center md:text-left"
+          >
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-wide mb-6 leading-tight">
               Serveware Collection
             </h1>
@@ -37,10 +42,15 @@ export default function ServewarePage() {
             <p className="text-sm sm:text-base md:text-lg opacity-80 max-w-md mx-auto md:mx-0">
               Designed for moments of gathering and refinement — where form meets function in quiet elegance.
             </p>
-          </div>
+          </motion.div>
 
           {/* RIGHT → IMAGE */}
-          <div className="relative w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[550px] overflow-hidden rounded-sm">
+          <motion.div
+            initial={{ opacity: 0, x: 80, scale: 1.05 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+            className="relative w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[550px] overflow-hidden rounded-sm"
+          >
             <Image
               src="/kitchen/kitchen.jpg"
               alt="Serveware"
@@ -50,7 +60,7 @@ export default function ServewarePage() {
             />
 
             <div className="absolute inset-0 bg-black/10" />
-          </div>
+          </motion.div>
 
         </div>
 
@@ -67,8 +77,9 @@ export default function ServewarePage() {
           <div className="w-10 h-[1px] bg-[var(--gold)] opacity-70 mx-auto md:mx-0" />
         </div>
 
+        {/* GRID WITH TITLES */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-          {images.map((img, i) => (
+          {images.map((item, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 60 }}
@@ -78,17 +89,25 @@ export default function ServewarePage() {
               className="relative overflow-hidden group rounded-sm"
             >
               
+              {/* IMAGE */}
               <div className="relative h-[220px] sm:h-[260px] md:h-[280px] lg:h-[320px]">
                 <Image
-                  src={img}
-                  alt="Serveware item"
+                  src={item.src}
+                  alt={item.title}
                   fill
                   className="object-cover transition duration-700 group-hover:scale-105"
                 />
               </div>
 
-              {/* overlay */}
+              {/* OVERLAY */}
               <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition duration-500" />
+
+              {/* TITLE */}
+              <div className="absolute bottom-0 left-0 w-full p-5">
+                <p className="text-white text-sm tracking-[0.15em] uppercase opacity-0 group-hover:opacity-100 transition duration-500">
+                  {item.title}
+                </p>
+              </div>
 
             </motion.div>
           ))}
