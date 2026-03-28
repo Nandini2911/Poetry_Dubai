@@ -14,7 +14,7 @@ const images = [
   { src: "/kitchen/kitchen5.jpg", title: "Silver Tea Pot with Sugar" },
   { src: "/kitchen/kitchen6.jpg", title: "Silver Kettle with Black accents" },
   {src: "/kitchen/kitchen7.jpg", title: "Silver Tray with Floral Border"},
-  {src: "/kitchen/kitchen8.jpg", title: "Silver Kettle Set"}
+ 
 ];
 
 export default function ServewarePage() {
