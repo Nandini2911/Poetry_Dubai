@@ -39,7 +39,7 @@ export default function AboutPage() {
                   playsInline
                   className="w-full h-full object-cover"
                 >
-                  <source src="/about-video.mp4" type="video/mp4" />
+                  <source src="/about-video.MP4" type="video/mp4" />
                 </video>
 
                 <div className="absolute inset-0 bg-black/20" />
